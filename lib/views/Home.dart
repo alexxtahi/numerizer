@@ -12,19 +12,6 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // Change system UI properties
@@ -54,6 +41,27 @@ class HomeViewState extends State<HomeView> {
                       radius: 30,
                       backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
                     ),
+                    Padding(padding: EdgeInsets.only(right: 10)),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Bonjour Alexandre.',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Text(
+                          'Ravi de vous revoir !',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            //fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 //todo: Settings button
@@ -66,13 +74,6 @@ class HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-          ),
-          Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.headline4,
           ),
         ],
       ),
