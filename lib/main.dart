@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         accentColor: Colors.black54,
       ),
-      home: HomeView(title: 'NumeriZer'),
+      home: HomeView(),
       debugShowCheckedModeBanner: false,
     );
   }
