@@ -6,7 +6,7 @@ class MyFavs extends StatefulWidget {
   List favlist;
   //todo: Constructor
   MyFavs({
-    required this.title,
+    this.title = 'Favoris',
     this.favlist = const [],
   });
   //todo: State
@@ -34,6 +34,7 @@ class MyFavsState extends State<MyFavs> {
         Padding(padding: EdgeInsets.only(bottom: 10)),
         //todo: Favoris Listview
         (widget.favlist.length == 0)
+            // Container to show if we have nothing into the favorite list
             ? Container(
                 width: screenWidth,
                 height: 150,
@@ -50,7 +51,11 @@ class MyFavsState extends State<MyFavs> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset('assets/img/outlinedUnhappyEmojiIcon.png', width: 45, height: 45,),
+                      Image.asset(
+                        'assets/img/outlinedUnhappyEmojiIcon.png',
+                        width: 45,
+                        height: 45,
+                      ),
                       Padding(padding: EdgeInsets.only(bottom: 10)),
                       Text(
                         'Rien dans la catégorie favoris',
@@ -63,6 +68,7 @@ class MyFavsState extends State<MyFavs> {
                   ),
                 ),
               )
+            // List to show if we have one or more element into the favorite list
             : Container(
                 width: screenWidth,
                 height: 150,
@@ -91,6 +97,7 @@ class MyFavsState extends State<MyFavs> {
                         ),
                       ),
                       child: Card(
+                        elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

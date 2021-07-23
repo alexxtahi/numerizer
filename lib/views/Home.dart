@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:numerizer/views/components/MyCategories.dart';
 import 'components/MyFavs.dart';
 import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
@@ -93,11 +94,14 @@ class HomeViewState extends State<HomeView> {
                   backgroundColor: Color.fromRGBO(0, 0, 0, 1),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 20)),
-                //todo: Box Favoris
+                //todo: Favorites Box
                 MyFavs(
                   title: 'Favoris',
-                  //favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
+                  favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
                 ),
+                Padding(padding: EdgeInsets.only(bottom: 20)),
+                //todo: Categories Box
+                MyCategories(),
               ],
             ),
           ),
