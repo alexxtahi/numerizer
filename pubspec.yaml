@@ -141,6 +141,9 @@ flutter:
      - assets/img/Logos/NumeriZerColor.png
      - assets/img/Logos/NumeriZerLightIcon.png
      - assets/img/Logos/NumeriZerDarkIcon.png
+    # app backgrounds
+     - assets/img/Backgrounds/Light.png
+     - assets/img/Backgrounds/Dark.png
     # moon icons
      - assets/img/moonIcon.png
      - assets/img/outlinedMoonIcon.png

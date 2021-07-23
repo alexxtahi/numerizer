@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:numerizer/views/Home.dart';
+import 'package:numerizer/views/SplashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         accentColor: Colors.black54,
       ),
-      home: HomeView(),
+      //home: HomeView(),
+      home: SplashScreen(), // start with Splash screen
       debugShowCheckedModeBanner: false,
     );
   }
