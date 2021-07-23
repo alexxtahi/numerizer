@@ -52,7 +52,7 @@ class MyCategoriesState extends State<MyCategories> {
             ),
           ],
         ),
-        Padding(padding: EdgeInsets.only(bottom: 10)),
+        //Padding(padding: EdgeInsets.only(bottom: 5)),
         //todo: Categories Listview
         Container(
           width: screenWidth,

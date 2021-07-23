@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:numerizer/views/components/MyCategories.dart';
+import 'components/MyCategories.dart';
+import 'components/MyHistoric.dart';
 import 'components/MyFavs.dart';
 import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
@@ -15,6 +16,8 @@ class HomeViewState extends State<HomeView> {
   // textfield controller
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -96,12 +99,16 @@ class HomeViewState extends State<HomeView> {
                 Padding(padding: EdgeInsets.only(bottom: 20)),
                 //todo: Favorites Box
                 MyFavs(
-                  title: 'Favoris',
                   favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 20)),
                 //todo: Categories Box
                 MyCategories(),
+                Padding(padding: EdgeInsets.only(bottom: 20)),
+                //todo: Historic Box
+                MyHistoric(
+                  historiclist: ['file1', 'file2', 'file3', 'file4'],
+                ),
               ],
             ),
           ),
