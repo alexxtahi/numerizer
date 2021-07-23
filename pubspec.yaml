@@ -67,6 +67,10 @@ flutter:
     # heart icons
      - assets/img/heartIcon.png
      - assets/img/outlinedHeartIcon.png
+     - assets/img/brokenHeartIcon.png
+     # emoji icons
+     - assets/img/unhappyEmojiIcon.png
+     - assets/img/outlinedUnhappyEmojiIcon.png
     # doc icons
      - assets/img/editDocIcon.png
      - assets/img/excelDocIcon.png

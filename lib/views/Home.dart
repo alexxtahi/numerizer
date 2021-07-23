@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:numerizer/views/components/MySearchBar.dart';
+import 'components/MyFavs.dart';
+import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
 
 class HomeView extends StatefulWidget {
@@ -32,6 +33,7 @@ class HomeViewState extends State<HomeView> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //todo: Header
                 Row(
@@ -89,6 +91,12 @@ class HomeViewState extends State<HomeView> {
                   borderRadius: 20,
                   borderColor: Colors.red,
                   backgroundColor: Color.fromRGBO(0, 0, 0, 1),
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 20)),
+                //todo: Box Favoris
+                MyFavs(
+                  title: 'Favoris',
+                  //favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
                 ),
               ],
             ),
