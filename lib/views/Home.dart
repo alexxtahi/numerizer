@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stacked_themes/stacked_themes.dart';
 import 'components/MyCategories.dart';
 import 'components/MyHistoric.dart';
 import 'components/MyFavs.dart';
 import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
-//import '../controllers/ThemeController.dart' as themeController;
+import '../controllers/ThemeController.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -32,11 +31,7 @@ class HomeViewState extends State<HomeView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //getThemeManager(context).toggleDarkLightTheme(); // switch to inverse theme
-          ThemeMode lightTheme = ThemeMode.light;
-          ThemeMode darkTheme = ThemeMode.dark;
-          getThemeManager(context)
-              .setThemeMode(lightTheme); // swith to theme selected
+          ThemeController.switchTheme(context);
           print("Theme has been changed");
         },
         tooltip: 'Change theme',
