@@ -6,7 +6,7 @@ import 'components/MyHistoric.dart';
 import 'components/MyFavs.dart';
 import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
-import '../controllers/ThemeChanger.dart' as themeChanger;
+//import '../controllers/ThemeController.dart' as themeController;
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -18,8 +18,6 @@ class HomeViewState extends State<HomeView> {
   // textfield controller
   @override
   Widget build(BuildContext context) {
-    //final double screenWidth = MediaQuery.of(context).size.width;
-    //final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -34,7 +32,11 @@ class HomeViewState extends State<HomeView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          getThemeManager(context).toggleDarkLightTheme();
+          //getThemeManager(context).toggleDarkLightTheme(); // switch to inverse theme
+          ThemeMode lightTheme = ThemeMode.light;
+          ThemeMode darkTheme = ThemeMode.dark;
+          getThemeManager(context)
+              .setThemeMode(lightTheme); // swith to theme selected
           print("Theme has been changed");
         },
         tooltip: 'Change theme',

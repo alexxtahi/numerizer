@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numerizer/views/SplashScreen.dart';
 import 'package:stacked_themes/stacked_themes.dart';
-import 'controllers/ThemeChanger.dart' as themeChanger;
+//import 'controllers/ThemeController.dart' as themeController;
 
 Future main() async {
   await ThemeManager.initialise();

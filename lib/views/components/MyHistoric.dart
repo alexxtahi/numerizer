@@ -42,7 +42,7 @@ class MyHistoricState extends State<MyHistoric> {
                 height: 300,
                 // rounded corner
                 decoration: BoxDecoration(
-                  //color: Color.fromRGBO(230, 230, 230, 1),
+                  //color: Color.fromRGBO(230, 230, 230, 1), // ! debug
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
                     color: Color.fromRGBO(0, 0, 0, 0.5),
@@ -74,7 +74,7 @@ class MyHistoricState extends State<MyHistoric> {
             : Container(
                 width: screenWidth,
                 height: 350,
-                color: Colors.red,
+                //color: Colors.red, // ! debug
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Center(
@@ -96,7 +96,7 @@ class MyHistoricState extends State<MyHistoric> {
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  //side: BorderSide(color: Color.fromRGBO(111, 50, 50, 1)),
+                                  //side: BorderSide(color: Color.fromRGBO(111, 50, 50, 1)), // ! debug
                                 ),
                               ),
                             ),
@@ -105,13 +105,13 @@ class MyHistoricState extends State<MyHistoric> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              //color: Colors.green,
+                              //color: Colors.green, // ! debug
                               child: Container(
                                 width: 180,
                                 height: 210,
                                 // rounded corner
                                 decoration: BoxDecoration(
-                                  //color: Color.fromRGBO(230, 230, 230, 1),
+                                  //color: Color.fromRGBO(230, 230, 230, 1), // ! debug
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(
                                     color: Theme.of(context).shadowColor,
@@ -125,55 +125,6 @@ class MyHistoricState extends State<MyHistoric> {
                   ),
                 ),
               ),
-        /*Container(
-                width: screenWidth,
-                height: 210,
-                color: Colors.red,
-                child: ListView.separated(
-                  itemCount: widget.historiclist
-                      .length, // number of card depending on historiclist
-                  scrollDirection: Axis.horizontal, // direction of scrolling
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
-                  itemBuilder: (context, index) {
-                    // cards
-                    return TextButton(
-                      onPressed: () {
-                        print('Fav card pressed');
-                      },
-                      style: ButtonStyle(
-                        // no padding
-                        padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.zero),
-                        // rounded corners
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            //side: BorderSide(color: Color.fromRGBO(111, 50, 50, 1)),
-                          ),
-                        ),
-                      ),
-                      child: Card(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        //color: Colors.green,
-                        child: Container(
-                          width: 170,
-                          // rounded corner
-                          decoration: BoxDecoration(
-                            //color: Color.fromRGBO(230, 230, 230, 1),
-                            borderRadius: BorderRadius.circular(15),
-                            border:
-                                Border.all(color: Color.fromRGBO(0, 0, 0, 0.5)),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),*/
       ],
     );
   }

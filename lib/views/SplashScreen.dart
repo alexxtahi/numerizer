@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:numerizer/views/Home.dart';
+import '../controllers/ScreenController.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
@@ -26,8 +27,7 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    List<double> screenSize = ScreenController.getScreenSize(context);
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -48,8 +48,8 @@ class SplashScreenState extends State<SplashScreen> {
           Image.asset(
             'assets/img/Backgrounds/Light.png',
             fit: BoxFit.cover,
-            width: screenWidth,
-            height: screenHeight,
+            width: screenSize[0],
+            height: screenSize[1],
           ),
           //todo: Splash screen icon
           Image.asset(
@@ -67,7 +67,7 @@ class SplashScreenState extends State<SplashScreen> {
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w800,
-                      color: Color.fromRGBO(0, 0, 0, 0.5),
+                      color: Theme.of(context).shadowColor,
                     ),
                   ),
                   TextSpan(
@@ -76,7 +76,7 @@ class SplashScreenState extends State<SplashScreen> {
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w800,
                       fontStyle: FontStyle.normal,
-                      color: Color.fromRGBO(0, 51, 102, 0.5),
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ],
