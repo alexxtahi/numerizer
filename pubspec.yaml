@@ -35,6 +35,7 @@ dependencies:
   path_provider: ^2.0.2
   image_picker: ^0.8.2
   async: ^2.6.1
+  stacked_themes: ^0.3.6
 
 dev_dependencies:
   flutter_test:

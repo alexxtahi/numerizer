@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MyFavs extends StatefulWidget {
   //todo: Properties
   final String title;
@@ -43,7 +44,7 @@ class MyFavsState extends State<MyFavs> {
                   //color: Color.fromRGBO(230, 230, 230, 1),
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                    color: Color.fromRGBO(0, 0, 0, 0.5),
+                    color: Theme.of(context).shadowColor,
                   ),
                 ),
                 child: Center(
@@ -106,7 +107,7 @@ class MyFavsState extends State<MyFavs> {
                           width: 110,
                           // rounded corner
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(230, 230, 230, 1),
+                            color: Theme.of(context).accentColor,
                             borderRadius: BorderRadius.circular(15),
                             //color: Colors.white,
                           ),

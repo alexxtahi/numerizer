@@ -6,18 +6,18 @@ import 'components/MyFavs.dart';
 import 'components/MySearchBar.dart';
 import 'components/MyOutlinedButton.dart';
 
-class HomeView extends StatefulWidget {
-  HomeView({Key? key}) : super(key: key);
+class SettingsView extends StatefulWidget {
+  SettingsView({Key? key}) : super(key: key);
   @override
-  HomeViewState createState() => HomeViewState();
+  SettingsViewState createState() => SettingsViewState();
 }
 
-class HomeViewState extends State<HomeView> {
+class SettingsViewState extends State<SettingsView> {
   // textfield controller
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    //final double screenWidth = MediaQuery.of(context).size.width;
+    //final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(

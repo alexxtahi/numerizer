@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MyCategories extends StatefulWidget {
   //todo: Properties
   final String title;
@@ -95,7 +96,7 @@ class MyCategoriesState extends State<MyCategories> {
                     ),
                   ),
                   backgroundColor: Colors.transparent,
-                  side: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.5)),
+                  side: BorderSide(color: Theme.of(context).shadowColor),
                 ),
               );
             },

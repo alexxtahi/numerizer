@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MyHistoric extends StatefulWidget {
   //todo: Properties
   final String title;
@@ -71,18 +72,20 @@ class MyHistoricState extends State<MyHistoric> {
               )
             // List to show if we have one or more element into the favorite list
             : Container(
+                width: screenWidth,
                 height: 350,
+                color: Colors.red,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Center(
                     child: Wrap(
-                      //crossAxisAlignment: WrapCrossAlignment.center,
-                      alignment: WrapAlignment.start,
+                      //crossAxisAlignment: WrapCrossAlignment.start,
+                      alignment: WrapAlignment.spaceBetween,
                       children: [
                         for (var file in widget.historiclist)
                           TextButton(
                             onPressed: () {
-                              print('Fav card pressed');
+                              print('Fav card $file pressed');
                             },
                             style: ButtonStyle(
                               // no padding
@@ -104,14 +107,15 @@ class MyHistoricState extends State<MyHistoric> {
                               ),
                               //color: Colors.green,
                               child: Container(
-                                width: 170,
+                                width: 180,
                                 height: 210,
                                 // rounded corner
                                 decoration: BoxDecoration(
                                   //color: Color.fromRGBO(230, 230, 230, 1),
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(
-                                      color: Color.fromRGBO(0, 0, 0, 0.5)),
+                                    color: Theme.of(context).shadowColor,
+                                  ),
                                 ),
                               ),
                             ),
