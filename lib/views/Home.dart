@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'components/MyCategories.dart';
 import 'components/MyHistoric.dart';
 import 'components/MyFavs.dart';
@@ -30,9 +31,11 @@ class HomeViewState extends State<HomeView> {
     // Return building scaffold
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ThemeController.switchTheme(context);
-          print("Theme has been changed");
+        onPressed: () async {
+          String theme = ThemeController.switchTheme(context);
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString('appTheme', theme);
+          print("Theme has been changed to $theme");
         },
         tooltip: 'Change theme',
         child: Icon(Icons.change_circle),
@@ -106,7 +109,14 @@ class HomeViewState extends State<HomeView> {
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Favorites Box
                   MyFavs(
-                    favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
+                    favlist: [
+                      'fav1',
+                      'fav2',
+                      'fav3',
+                      'fav4',
+                      'fav5',
+                      'fav6'
+                    ], // ! debug
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Categories Box
@@ -114,7 +124,12 @@ class HomeViewState extends State<HomeView> {
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Historic Box
                   MyHistoric(
-                    historiclist: ['file1', 'file2', 'file3', 'file4'],
+                    historiclist: [
+                      'file1',
+                      'file2',
+                      'file3',
+                      'file4'
+                    ], // ! debug
                   ),
                 ],
               ),

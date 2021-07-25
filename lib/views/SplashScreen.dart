@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:numerizer/views/Home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 import '../controllers/ScreenController.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,9 +13,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
+  String backgroundUri = 'assets/img/Backgrounds/Dark.png';
+  String iconUri = 'assets/img/Logos/NumeriZerLightIcon.png';
+
   @override
   void initState() {
-    //todo: implement initState
+    //todo: Start timer
     Timer(
       Duration(seconds: 5),
       () {
@@ -28,6 +33,8 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     List<double> screenSize = ScreenController.getScreenSize(context);
+    //todo: Load icon and background function of the recent app theme
+    setSplashScreenElements();
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -46,14 +53,16 @@ class SplashScreenState extends State<SplashScreen> {
         children: [
           //todo: Splash screen background
           Image.asset(
-            'assets/img/Backgrounds/Light.png',
+            //'assets/img/Backgrounds/Light.png',
+            this.backgroundUri,
             fit: BoxFit.cover,
             width: screenSize[0],
             height: screenSize[1],
           ),
           //todo: Splash screen icon
           Image.asset(
-            'assets/img/Logos/NumeriZerDarkIcon.png',
+            this.iconUri,
+            //'assets/img/Logos/NumeriZerDarkIcon.png',
           ),
           //todo: Signature
           Positioned(
@@ -86,5 +95,40 @@ class SplashScreenState extends State<SplashScreen> {
         ],
       ),
     );
+  }
+
+  //todo: function to get the recenty app theme set by the user
+  void setSplashScreenElements() async {
+    /*
+    * This function set the splash screen background
+    * Function of the recent app theme
+    */
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      this.backgroundUri = 'assets/img/Backgrounds/Dark.png';
+      this.iconUri = 'assets/img/Logos/NumeriZerLightIcon.png';
+      // ? apply default theme
+      getThemeManager(context).setThemeMode(ThemeMode.dark);
+      // ? Key verification
+      if (prefs.containsKey('appTheme')) {
+        print("Getting recent theme of the app");
+        String? appTheme = prefs.getString('appTheme');
+        // ? Recent theme verification
+        if (appTheme == 'Dark') {
+          this.backgroundUri = 'assets/img/Backgrounds/Dark.png';
+          this.iconUri = 'assets/img/Logos/NumeriZerLightIcon.png';
+          // ? apply the recent theme
+          getThemeManager(context).setThemeMode(ThemeMode.dark);
+        } else {
+          this.backgroundUri = 'assets/img/Backgrounds/Light.png';
+          this.iconUri = 'assets/img/Logos/NumeriZerDarkIcon.png';
+          // ? apply the recent theme
+          getThemeManager(context).setThemeMode(ThemeMode.light);
+        }
+      } else {
+        print(
+            'Loading of the default theme because nothing theme has been set by the user');
+      }
+    });
   }
 }

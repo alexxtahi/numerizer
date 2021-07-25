@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numerizer/views/SplashScreen.dart';
 import 'package:stacked_themes/stacked_themes.dart';
-//import 'controllers/ThemeController.dart' as themeController;
+import 'controllers/ThemeController.dart';
 
 Future main() async {
   await ThemeManager.initialise();
@@ -9,11 +9,16 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
+  String recentTheme = 'Light';
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    getRecentTheme(); // get the last theme selected by the user
     return ThemeBuilder(
-      defaultThemeMode: ThemeMode.dark,
+      defaultThemeMode: (this.recentTheme == 'Dark')
+          ? ThemeMode.dark
+          : ThemeMode.light, // apply recent theme
+      //defaultThemeMode: ThemeMode.dark,
       //todo: Light Theme
       lightTheme: ThemeData(
         brightness: Brightness.light,
@@ -44,5 +49,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
       ),
     );
+  }
+
+  //todo: Getter to the recent theme
+  void getRecentTheme() async {
+    this.recentTheme = (await ThemeController.getRecentTheme())!;
   }
 }
