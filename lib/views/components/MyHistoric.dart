@@ -71,59 +71,63 @@ class MyHistoricState extends State<MyHistoric> {
                 ),
               )
             // List to show if we have one or more element into the favorite list
-            : Container(
-                width: screenWidth,
-                height: 350,
-                //color: Colors.red, // ! debug
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Center(
-                    child: Wrap(
-                      //crossAxisAlignment: WrapCrossAlignment.start,
-                      alignment: WrapAlignment.spaceBetween,
-                      children: [
-                        for (var file in widget.historiclist)
-                          TextButton(
-                            onPressed: () {
-                              print('Fav card $file pressed');
-                            },
-                            style: ButtonStyle(
-                              // no padding
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.zero),
-                              // rounded corners
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  //side: BorderSide(color: Color.fromRGBO(111, 50, 50, 1)), // ! debug
+            : Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: screenWidth,
+                      //height: 350,
+                      //color: Colors.red, // ! debug
+                      child: Center(
+                        child: Wrap(
+                          //crossAxisAlignment: WrapCrossAlignment.start,
+                          alignment: WrapAlignment.spaceBetween,
+                          children: [
+                            for (var file in widget.historiclist)
+                              TextButton(
+                                onPressed: () {
+                                  print('Fav card $file pressed');
+                                },
+                                style: ButtonStyle(
+                                  // no padding
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                          EdgeInsets.zero),
+                                  // rounded corners
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      //side: BorderSide(color: Color.fromRGBO(111, 50, 50, 1)), // ! debug
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            child: Card(
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              //color: Colors.green, // ! debug
-                              child: Container(
-                                width: 180,
-                                height: 210,
-                                // rounded corner
-                                decoration: BoxDecoration(
-                                  //color: Color.fromRGBO(230, 230, 230, 1), // ! debug
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(
-                                    color: Theme.of(context).shadowColor,
+                                child: Card(
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  //color: Colors.green, // ! debug
+                                  child: Container(
+                                    width: 180,
+                                    height: 210,
+                                    // rounded corner
+                                    decoration: BoxDecoration(
+                                      //color: Color.fromRGBO(230, 230, 230, 1), // ! debug
+                                      borderRadius: BorderRadius.circular(15),
+                                      border: Border.all(
+                                        color: Theme.of(context).shadowColor,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                      ],
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
       ],
     );

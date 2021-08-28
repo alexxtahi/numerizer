@@ -52,6 +52,7 @@ class MySearchBarState extends State<MySearchBar> {
             borderRadius: 10,
             borderColor: Colors.transparent,
             backgroundColor: widget.searchButtonColor,
+            iconColor: Colors.white,
           ),
         ),
         /*errorText: 'Aucun résultat',

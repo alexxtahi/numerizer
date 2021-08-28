@@ -86,7 +86,7 @@ class MyCategoriesState extends State<MyCategories> {
                   avatar: Icon(
                     //Icons.file_present,
                     Icons.insert_drive_file_outlined,
-                    color: Colors.black,
+                    color: Theme.of(context).hintColor,
                     size: 20,
                   ),
                   label: Text(

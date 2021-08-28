@@ -37,6 +37,7 @@ dependencies:
   async: ^2.6.1
   stacked_themes: ^0.3.6
   shared_preferences: ^2.0.6
+  fading_edge_scrollview: ^2.0.0
 
 dev_dependencies:
   flutter_test:

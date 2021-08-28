@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:numerizer/views/Home.dart';
+import 'package:numerizer/views/HomeView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 import '../controllers/ScreenController.dart';
@@ -24,7 +24,9 @@ class SplashScreenState extends State<SplashScreen> {
       () {
         print('Showing home view !');
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeView()));
+          context,
+          MaterialPageRoute(builder: (context) => HomeView()),
+        );
       },
     );
     super.initState();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
@@ -23,8 +24,28 @@ class ThemeController {
     // ? get the new theme mode selected
     ThemeMode? selectedThemeMode = getThemeManager(context).selectedThemeMode;
     if (selectedThemeMode == ThemeMode.dark) {
+      // ? Change status bar theme
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+      );
       return 'Dark';
     } else {
+      // ? Change status bar theme
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.dark,
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
       return 'Light';
     }
   }

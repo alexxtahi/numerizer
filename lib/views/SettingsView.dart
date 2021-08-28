@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'components/MyCategories.dart';
-import 'components/MyHistoric.dart';
-import 'components/MyFavs.dart';
-import 'components/MySearchBar.dart';
-import 'components/MyOutlinedButton.dart';
-import '../controllers/ThemeController.dart';
+import 'package:numerizer/views/components/MyCategories.dart';
+import 'package:numerizer/views/components/MyHistoric.dart';
+import 'package:numerizer/views/components/MyFavs.dart';
+import 'package:numerizer/views/components/MySearchBar.dart';
+import 'package:numerizer/views/components/MyOutlinedButton.dart';
 
-class HomeView extends StatefulWidget {
-  HomeView({Key? key}) : super(key: key);
+class SettingsView extends StatefulWidget {
+  SettingsView({Key? key}) : super(key: key);
   @override
-  HomeViewState createState() => HomeViewState();
+  SettingsViewState createState() => SettingsViewState();
 }
 
-class HomeViewState extends State<HomeView> {
+class SettingsViewState extends State<SettingsView> {
   // textfield controller
   @override
   Widget build(BuildContext context) {
+    //final double screenWidth = MediaQuery.of(context).size.width;
+    //final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        //statusBarBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        //statusBarIconBrightness: Brightness.light,
-        //systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
     // Return building scaffold
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          String theme = ThemeController.switchTheme(context);
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-          prefs.setString('appTheme', theme);
-          print("Theme has been changed to $theme");
-        },
-        tooltip: 'Change theme',
-        child: Icon(Icons.change_circle),
-      ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -58,7 +48,7 @@ class HomeViewState extends State<HomeView> {
                         children: [
                           CircleAvatar(
                             radius: 30,
-                            backgroundColor: Theme.of(context).accentColor,
+                            backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
                           ),
                           Padding(padding: EdgeInsets.only(right: 10)),
                           Column(
@@ -90,7 +80,8 @@ class HomeViewState extends State<HomeView> {
                         iconSize: 45,
                         size: 60,
                         borderRadius: 20,
-                        borderColor: Theme.of(context).accentColor,
+                        borderColor: Color.fromRGBO(0, 0, 0, 0.5),
+                        iconColor: Colors.white,
                       ),
                     ],
                   ),
@@ -100,23 +91,16 @@ class HomeViewState extends State<HomeView> {
                     icon: 'assets/img/searchIcon.png',
                     iconSize: 30,
                     searchButtonSize: 30,
-                    searchButtonColor: Theme.of(context).primaryColor,
                     width: 200,
                     height: 50,
                     borderRadius: 20,
-                    backgroundColor: Theme.of(context).accentColor,
+                    borderColor: Colors.red,
+                    backgroundColor: Color.fromRGBO(0, 0, 0, 1),
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Favorites Box
                   MyFavs(
-                    favlist: [
-                      'fav1',
-                      'fav2',
-                      'fav3',
-                      'fav4',
-                      'fav5',
-                      'fav6'
-                    ], // ! debug
+                    favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Categories Box
@@ -124,12 +108,7 @@ class HomeViewState extends State<HomeView> {
                   Padding(padding: EdgeInsets.only(bottom: 20)),
                   //todo: Historic Box
                   MyHistoric(
-                    historiclist: [
-                      'file1',
-                      'file2',
-                      'file3',
-                      'file4'
-                    ], // ! debug
+                    historiclist: ['file1', 'file2', 'file3', 'file4'],
                   ),
                 ],
               ),

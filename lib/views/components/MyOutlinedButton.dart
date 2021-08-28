@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class MyOutlinedButton extends StatefulWidget {
   //todo: Properties
   final String title;
+  final double size;
   final String icon;
   final double iconSize;
-  final double size;
+  final Color iconColor;
   final double borderRadius;
   final Color borderColor;
   final Color backgroundColor;
@@ -17,6 +18,7 @@ class MyOutlinedButton extends StatefulWidget {
     required this.size,
     required this.borderRadius,
     required this.borderColor,
+    required this.iconColor,
     this.backgroundColor = Colors.transparent,
   });
   //todo: State
@@ -36,6 +38,7 @@ class MyOutlinedButtonState extends State<MyOutlinedButton> {
         widget.icon,
         width: widget.iconSize,
         height: widget.iconSize,
+        color: widget.iconColor,
       ),
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
