@@ -4,22 +4,24 @@ class MyOutlinedButton extends StatefulWidget {
   //todo: Properties
   final String title;
   final double size;
-  final String icon;
+  final icon;
   final double iconSize;
   final Color iconColor;
   final double borderRadius;
   final Color borderColor;
   final Color backgroundColor;
+  final void Function()? onPressed;
   //todo: Constructor
   MyOutlinedButton({
     this.title = 'button',
     required this.icon,
-    required this.iconSize,
+    this.iconSize = 45,
     required this.size,
     required this.borderRadius,
     required this.borderColor,
     required this.iconColor,
     this.backgroundColor = Colors.transparent,
+    this.onPressed,
   });
   //todo: State
   @override
@@ -31,15 +33,15 @@ class MyOutlinedButtonState extends State<MyOutlinedButton> {
   Widget build(BuildContext context) {
     // Return building outlined button
     return OutlinedButton(
-      onPressed: () {
-        print(widget.title + " button pressed !");
-      },
-      child: Image.asset(
-        widget.icon,
-        width: widget.iconSize,
-        height: widget.iconSize,
-        color: widget.iconColor,
-      ),
+      onPressed: widget.onPressed,
+      child: (widget.icon is String)
+          ? Image.asset(
+              widget.icon, // ? Insert image path
+              width: widget.iconSize,
+              height: widget.iconSize,
+              color: widget.iconColor,
+            )
+          : widget.icon, // ? Insert the Icon widget
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
             EdgeInsets.symmetric(horizontal: 0, vertical: 0)),

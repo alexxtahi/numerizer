@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         primaryColor: Color.fromRGBO(80, 190, 232, 1),
-        accentColor: Color.fromRGBO(242, 242, 242, 1),
+        accentColor: Color.fromRGBO(150, 150, 150, 1),
         shadowColor: Color.fromRGBO(0, 0, 0, 0.5),
         hintColor: Colors.black,
       ),

@@ -16,6 +16,30 @@ class ThemeController {
   //todo: Theme changer
   static void changeTheme(BuildContext context, ThemeMode theme) {
     getThemeManager(context).setThemeMode(theme); // swith to theme selected
+    // ? Change the status bar color and brightness function of the theme selected
+    if (theme == ThemeMode.dark) {
+      // Change status bar theme to adapt it with the dark theme
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+      );
+    } else {
+      // Change status bar theme to adapt it with the dark theme
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.dark,
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
+    }
   }
 
   //todo: Theme switcher

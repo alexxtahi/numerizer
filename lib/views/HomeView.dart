@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:numerizer/controllers/ScreenController.dart';
+import 'package:numerizer/functions.dart';
+import 'package:numerizer/views/SettingsView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:numerizer/views/components/MyCategories.dart';
@@ -20,6 +23,7 @@ class HomeViewState extends State<HomeView> {
   ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
+    ScreenController.actualView = "HomeView";
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -92,10 +96,14 @@ class HomeViewState extends State<HomeView> {
                     borderRadius: 20,
                     borderColor: Theme.of(context).accentColor,
                     iconColor: Theme.of(context).hintColor,
+                    onPressed: () {
+                      // ? Open the Settings view
+                      openPage(context, SettingsView());
+                    },
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(bottom: 20)),
+              SizedBox(height: 20),
               //todo: Search Bar
               MySearchBar(
                 icon: 'assets/img/searchIcon.png',
@@ -107,7 +115,7 @@ class HomeViewState extends State<HomeView> {
                 borderRadius: 20,
                 backgroundColor: Theme.of(context).accentColor,
               ),
-              Padding(padding: EdgeInsets.only(bottom: 20)),
+              SizedBox(height: 20),
               //todo: Scrolling View
               Expanded(
                 child: FadingEdgeScrollView.fromSingleChildScrollView(
@@ -130,10 +138,10 @@ class HomeViewState extends State<HomeView> {
                             'fav6'
                           ], // ! debug
                         ),
-                        Padding(padding: EdgeInsets.only(bottom: 20)),
+                        SizedBox(height: 20),
                         //todo: Categories Box
                         MyCategories(),
-                        Padding(padding: EdgeInsets.only(bottom: 20)),
+                        SizedBox(height: 20),
                         //todo: Historic Box
                         MyHistoric(
                           historiclist: [

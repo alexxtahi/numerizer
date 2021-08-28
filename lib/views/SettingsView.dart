@@ -1,10 +1,15 @@
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:numerizer/controllers/ScreenController.dart';
+import 'package:numerizer/functions.dart';
 import 'package:numerizer/views/components/MyCategories.dart';
 import 'package:numerizer/views/components/MyHistoric.dart';
 import 'package:numerizer/views/components/MyFavs.dart';
 import 'package:numerizer/views/components/MySearchBar.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
+import 'package:numerizer/views/components/MyText.dart';
+import 'package:numerizer/views/layouts/ThemeGridViewLayout.dart';
 
 class SettingsView extends StatefulWidget {
   SettingsView({Key? key}) : super(key: key);
@@ -13,107 +18,103 @@ class SettingsView extends StatefulWidget {
 }
 
 class SettingsViewState extends State<SettingsView> {
-  // textfield controller
+  // scrolling view controller
+  ScrollController scrollController = ScrollController();
+  ScrollController gridViewScrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
+    ScreenController.actualView = "SettingsView";
     //final double screenWidth = MediaQuery.of(context).size.width;
     //final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
+        //statusBarBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarIconBrightness: Brightness.dark,
+        //statusBarIconBrightness: Brightness.dark,
+        //systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
     // Return building scaffold
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //todo: Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  //todo: Header
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //todo: User infos
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
-                          ),
-                          Padding(padding: EdgeInsets.only(right: 10)),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Bonjour Alexandre.',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                'Ravi de vous revoir !',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  //fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      //todo: Settings button
-                      MyOutlinedButton(
-                        title: 'Settings',
-                        icon: 'assets/img/settingsIcon.png',
-                        iconSize: 45,
-                        size: 60,
-                        borderRadius: 20,
-                        borderColor: Color.fromRGBO(0, 0, 0, 0.5),
-                        iconColor: Colors.white,
-                      ),
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.only(bottom: 20)),
-                  //todo: Search Bar
-                  MySearchBar(
-                    icon: 'assets/img/searchIcon.png',
-                    iconSize: 30,
-                    searchButtonSize: 30,
-                    width: 200,
-                    height: 50,
+                  //todo: Back button
+                  MyOutlinedButton(
+                    title: 'Settings',
+                    size: 60,
                     borderRadius: 20,
-                    borderColor: Colors.red,
-                    backgroundColor: Color.fromRGBO(0, 0, 0, 1),
+                    borderColor: Theme.of(context).accentColor,
+                    iconColor: Theme.of(context).hintColor,
+                    icon: Icon(
+                      Icons.keyboard_arrow_left_rounded,
+                      color: Theme.of(context).hintColor,
+                      size: 60,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                  Padding(padding: EdgeInsets.only(bottom: 20)),
-                  //todo: Favorites Box
-                  MyFavs(
-                    favlist: ['fav1', 'fav2', 'fav3', 'fav4', 'fav5', 'fav6'],
-                  ),
-                  Padding(padding: EdgeInsets.only(bottom: 20)),
-                  //todo: Categories Box
-                  MyCategories(),
-                  Padding(padding: EdgeInsets.only(bottom: 20)),
-                  //todo: Historic Box
-                  MyHistoric(
-                    historiclist: ['file1', 'file2', 'file3', 'file4'],
+                  SizedBox(width: 15),
+                  //todo: Title
+                  MyText(
+                    text: 'Paramètres',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Theme.of(context).hintColor,
                   ),
                 ],
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              //todo: Scrolling View
+              Expanded(
+                child: FadingEdgeScrollView.fromSingleChildScrollView(
+                  gradientFractionOnStart: 0.05,
+                  gradientFractionOnEnd: 0.05,
+                  child: SingleChildScrollView(
+                    controller: this.scrollController,
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        //todo: Theme text
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            MyText(
+                              text: 'Thème',
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.center,
+                              color: Theme.of(context).hintColor,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        //todo: Theme Grid
+                        ThemeGridViewLayout(
+                          gridViewScrollController:
+                              this.gridViewScrollController,
+                          elementsPerLine: 2,
+                          childAspectRatio: 1.25,
+                          crossAxisSpacing: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
