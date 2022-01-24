@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
         secondaryHeaderColor: Color.fromRGBO(150, 150, 150, 1),
         shadowColor: Color.fromRGBO(0, 0, 0, 0.5),
         hintColor: Colors.black,
+        errorColor: Colors.red[900],
+        indicatorColor: Colors.yellow[900],
       ),
       //todo: Dark Theme
       darkTheme: ThemeData(
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
         secondaryHeaderColor: Color.fromRGBO(50, 50, 50, 1),
         shadowColor: Color.fromRGBO(255, 255, 255, 0.5),
         hintColor: Colors.white,
+        errorColor: Colors.red[900],
+        indicatorColor: Colors.yellow[900],
       ),
       //themes: themeChanger.getThemes(),
       //todo: Builder of the theme

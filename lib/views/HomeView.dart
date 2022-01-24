@@ -4,6 +4,7 @@ import 'package:numerizer/controllers/ScreenController.dart';
 import 'package:numerizer/functions.dart';
 import 'package:numerizer/views/SettingsView.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
+import 'package:numerizer/views/components/MyAvatar.dart';
 import 'package:numerizer/views/components/MyCategories.dart';
 import 'package:numerizer/views/components/MyCircularButton.dart';
 import 'package:numerizer/views/components/MyHistoric.dart';
@@ -71,7 +72,7 @@ class HomeViewState extends State<HomeView> {
               MyCircularButton(
                 icon: Icon(
                   Icons.add_rounded,
-                  color: Theme.of(context).primaryColor, //Colors.white,
+                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
                   size: 35,
                 ),
                 onPressed: () {
@@ -79,30 +80,52 @@ class HomeViewState extends State<HomeView> {
                 },
                 padding: 15,
                 borderColor: Theme.of(context).primaryColor,
-                backgroundColor:
-                    Colors.transparent, //Theme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
+              ),
+              //? Button to see recent activities
+              MyCircularButton(
+                icon: Icon(
+                  Icons.history_rounded,
+                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
+                  size: 35,
+                ),
+                onPressed: () {
+                  print('Nouveau scan');
+                },
+                padding: 15,
+                borderColor: Theme.of(context).indicatorColor,
+                backgroundColor: Theme.of(context).indicatorColor,
+                splashColor: Theme.of(context).indicatorColor,
               ),
               //? Button to open the trash
               MyCircularButton(
                 icon: Icon(
-                  Icons.texture_rounded,
-                  color: Theme.of(context).primaryColor, //Colors.white,
+                  Icons.delete_outline_rounded,
+                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
                   size: 35,
                 ),
                 onPressed: () {
                   print('Nouveau scan');
                 },
                 padding: 15,
-                borderColor: Theme.of(context).primaryColor,
-                backgroundColor:
-                    Colors.transparent, //Theme.of(context).primaryColor,
+                borderColor: Theme.of(context).errorColor,
+                backgroundColor: Theme.of(context).errorColor,
+                splashColor: Theme.of(context).errorColor,
               ),
+              //? Account profile button
+              MyAvatar(),
             ],
           ),
         ),
-        panel: Center(
-          child: MyText(
-            text: 'Ceci est un widget',
+        panel: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).backgroundColor,
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Center(
+            child: MyText(
+              text: 'Ceci est un widget',
+            ),
           ),
         ),
         body: SafeArea(
@@ -118,11 +141,9 @@ class HomeViewState extends State<HomeView> {
                     //todo: User infos
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Theme.of(context).secondaryHeaderColor,
-                        ),
-                        Padding(padding: EdgeInsets.only(right: 10)),
+                        //? Account profile button
+                        MyAvatar(),
+                        SizedBox(width: 10),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,6 +174,7 @@ class HomeViewState extends State<HomeView> {
                       size: 60,
                       borderRadius: 20,
                       borderColor: Theme.of(context).secondaryHeaderColor,
+                      hasIconColor: true,
                       iconColor: Theme.of(context).hintColor,
                       onPressed: () {
                         // ? Open the Settings view
