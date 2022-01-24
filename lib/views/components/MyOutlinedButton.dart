@@ -6,7 +6,8 @@ class MyOutlinedButton extends StatefulWidget {
   final double size;
   final icon;
   final double iconSize;
-  final Color iconColor;
+  final Color? iconColor;
+  final bool hasIconColor;
   final double borderRadius;
   final Color borderColor;
   final Color backgroundColor;
@@ -19,7 +20,8 @@ class MyOutlinedButton extends StatefulWidget {
     required this.size,
     required this.borderRadius,
     required this.borderColor,
-    required this.iconColor,
+    this.iconColor,
+    this.hasIconColor = false,
     this.backgroundColor = Colors.transparent,
     this.onPressed,
   });
@@ -39,7 +41,9 @@ class MyOutlinedButtonState extends State<MyOutlinedButton> {
               widget.icon, // ? Insert image path
               width: widget.iconSize,
               height: widget.iconSize,
-              color: widget.iconColor,
+              color: widget.hasIconColor
+                ? widget.iconColor
+                : null,
             )
           : widget.icon, // ? Insert the Icon widget
       style: ButtonStyle(

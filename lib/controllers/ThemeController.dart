@@ -93,23 +93,23 @@ class ThemeController {
     return [
       ThemeData(
         backgroundColor: Colors.blue,
-        accentColor: Colors.yellow,
+        secondaryHeaderColor: Colors.yellow,
       ),
       ThemeData(
         backgroundColor: Colors.white,
-        accentColor: Colors.green,
+        secondaryHeaderColor: Colors.green,
       ),
       ThemeData(
         backgroundColor: Colors.purple,
-        accentColor: Colors.green,
+        secondaryHeaderColor: Colors.green,
       ),
       ThemeData(
         backgroundColor: Colors.black,
-        accentColor: Colors.red,
+        secondaryHeaderColor: Colors.red,
       ),
       ThemeData(
         backgroundColor: Colors.red,
-        accentColor: Colors.blue,
+        secondaryHeaderColor: Colors.blue,
       ),
     ];
   }

@@ -51,7 +51,7 @@ class SettingsViewState extends State<SettingsView> {
                     title: 'Settings',
                     size: 60,
                     borderRadius: 20,
-                    borderColor: Theme.of(context).accentColor,
+                    borderColor: Theme.of(context).secondaryHeaderColor,
                     iconColor: Theme.of(context).hintColor,
                     icon: Icon(
                       Icons.keyboard_arrow_left_rounded,

@@ -61,15 +61,31 @@ class HomeViewState extends State<HomeView> {
           padding: EdgeInsets.symmetric(horizontal: 20),
           width: screenSize[0],
           decoration: BoxDecoration(
-            //color: Colors.red,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              //? Button to add a new document
               MyCircularButton(
                 icon: Icon(
                   Icons.add_rounded,
+                  color: Theme.of(context).primaryColor, //Colors.white,
+                  size: 35,
+                ),
+                onPressed: () {
+                  print('Nouveau scan');
+                },
+                padding: 15,
+                borderColor: Theme.of(context).primaryColor,
+                backgroundColor:
+                    Colors.transparent, //Theme.of(context).primaryColor,
+              ),
+              //? Button to open the trash
+              MyCircularButton(
+                icon: Icon(
+                  Icons.texture_rounded,
                   color: Theme.of(context).primaryColor, //Colors.white,
                   size: 35,
                 ),
@@ -104,7 +120,7 @@ class HomeViewState extends State<HomeView> {
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          backgroundColor: Theme.of(context).accentColor,
+                          backgroundColor: Theme.of(context).secondaryHeaderColor,
                         ),
                         Padding(padding: EdgeInsets.only(right: 10)),
                         Column(
@@ -136,7 +152,7 @@ class HomeViewState extends State<HomeView> {
                       iconSize: 45,
                       size: 60,
                       borderRadius: 20,
-                      borderColor: Theme.of(context).accentColor,
+                      borderColor: Theme.of(context).secondaryHeaderColor,
                       iconColor: Theme.of(context).hintColor,
                       onPressed: () {
                         // ? Open the Settings view
@@ -155,7 +171,7 @@ class HomeViewState extends State<HomeView> {
                   width: 200,
                   height: 50,
                   borderRadius: 20,
-                  backgroundColor: Theme.of(context).accentColor,
+                  backgroundColor: Theme.of(context).secondaryHeaderColor,
                 ),
                 SizedBox(height: 20),
                 //todo: Scrolling View

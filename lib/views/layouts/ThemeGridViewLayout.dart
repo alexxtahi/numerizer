@@ -3,6 +3,7 @@ import 'package:numerizer/controllers/ScreenController.dart';
 import 'package:numerizer/controllers/ThemeController.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
 import 'package:numerizer/views/components/MyText.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 
 class ThemeGridViewLayout extends StatefulWidget {
   final ScrollController gridViewScrollController;
@@ -29,6 +30,15 @@ class ThemeGridViewLayout extends StatefulWidget {
 }
 
 class ThemeGridViewLayoutState extends State<ThemeGridViewLayout> {
+  bool isDarkMode = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isDarkMode = (getThemeManager(context).selectedThemeMode == ThemeMode.dark)
+      ? true : false ;
+  }
+
   @override
   Widget build(BuildContext context) {
     List<double> screenSize = ScreenController.getScreenSize(context);
@@ -49,26 +59,34 @@ class ThemeGridViewLayoutState extends State<ThemeGridViewLayout> {
         children: [
           //todo: Dark theme button
           MyOutlinedButton(
-            icon: 'assets/img/outlinedMoonIcon.png',
+            icon: isDarkMode
+                ? 'assets/img/moonIcon.png'
+                : 'assets/img/outlinedMoonIcon.png',
             size: 60,
             borderRadius: 20,
             borderColor: Theme.of(context).hintColor.withOpacity(0.15),
+            hasIconColor: !isDarkMode,
             iconColor: Theme.of(context).hintColor,
             onPressed: () {
               // Set Dark theme
               ThemeController.changeTheme(context, ThemeMode.dark);
+              setState(() => isDarkMode = true);
             },
           ),
           //todo: Light theme button
           MyOutlinedButton(
-            icon: 'assets/img/outlinedSunIcon.png',
+            icon: isDarkMode
+                ? 'assets/img/outlinedSunIcon.png'
+                : 'assets/img/sunIcon.png',
             size: 60,
             borderRadius: 20,
             borderColor: Theme.of(context).hintColor.withOpacity(0.15),
+            hasIconColor: isDarkMode,
             iconColor: Theme.of(context).hintColor,
             onPressed: () {
               // Set Light theme
               ThemeController.changeTheme(context, ThemeMode.light);
+              setState(() => isDarkMode = false);
             },
           ),
           /*

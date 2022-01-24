@@ -42,8 +42,10 @@ class MyElevatedButtonState extends State<MyElevatedButton> {
         fixedSize: (widget.width != null)
             ? MaterialStateProperty.all<Size>(
                 Size(
+                  50, 50
+                  /*
                   widget.width!.toDouble(),
-                  widget.height!.toDouble(),
+                  widget.height!.toDouble(),*/
                 ),
               )
             : null,

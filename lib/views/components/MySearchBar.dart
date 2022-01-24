@@ -39,7 +39,7 @@ class MySearchBarState extends State<MySearchBar> {
       style: TextStyle(fontFamily: 'Montserrat'),
       decoration: InputDecoration(
         filled: true,
-        fillColor: Theme.of(context).accentColor,
+        fillColor: Theme.of(context).secondaryHeaderColor,
         hintText: 'Rechercher un document',
         hintStyle: TextStyle(fontFamily: 'Montserrat'),
         suffixIcon: Padding(

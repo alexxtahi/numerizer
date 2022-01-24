@@ -107,7 +107,7 @@ class MyFavsState extends State<MyFavs> {
                           width: 110,
                           // rounded corner
                           decoration: BoxDecoration(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).secondaryHeaderColor,
                             borderRadius: BorderRadius.circular(15),
                             //color: Colors.white,
                           ),
