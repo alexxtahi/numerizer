@@ -2,11 +2,7 @@ import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:numerizer/controllers/ScreenController.dart';
-import 'package:numerizer/functions.dart';
-import 'package:numerizer/views/components/MyCategories.dart';
-import 'package:numerizer/views/components/MyHistoric.dart';
-import 'package:numerizer/views/components/MyFavs.dart';
-import 'package:numerizer/views/components/MySearchBar.dart';
+import 'package:numerizer/views/components/MyElevatedButton.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
 import 'package:numerizer/views/components/MyText.dart';
 import 'package:numerizer/views/layouts/ThemeGridViewLayout.dart';
@@ -24,7 +20,8 @@ class SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     ScreenController.actualView = "SettingsView";
-    //final double screenWidth = MediaQuery.of(context).size.width;
+    final screenSize = [MediaQuery.of(context).size.width, MediaQuery.of(context).size.height
+    ];
     //final double screenHeight = MediaQuery.of(context).size.height;
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
@@ -107,6 +104,26 @@ class SettingsViewState extends State<SettingsView> {
                           elementsPerLine: 2,
                           childAspectRatio: 1.25,
                           crossAxisSpacing: 10,
+                        ),
+                        SizedBox(height: 25),
+                        //todo: Divider
+                        Container(
+                          width: 100,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color:
+                                Theme.of(context).shadowColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        SizedBox(height: 25),
+                        //todo: Doc button
+                        MyElevatedButton(
+                          width: screenSize[0],
+                          onPressed: () {},
+                          child: MyText(
+                            text: 'Documents',
+                          ),
                         ),
                       ],
                     ),

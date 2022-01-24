@@ -99,7 +99,7 @@ class SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  //todo: function to get the recenty app theme set by the user
+  //todo: function to get previous app theme set by the user
   void setSplashScreenElements() async {
     /*
     * This function set the splash screen background

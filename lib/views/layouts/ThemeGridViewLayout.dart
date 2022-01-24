@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numerizer/controllers/ScreenController.dart';
 import 'package:numerizer/controllers/ThemeController.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
+import 'package:numerizer/views/components/MyText.dart';
 
 class ThemeGridViewLayout extends StatefulWidget {
   final ScrollController gridViewScrollController;
@@ -16,7 +17,7 @@ class ThemeGridViewLayout extends StatefulWidget {
     Key? key,
     required this.gridViewScrollController,
     required this.elementsPerLine,
-    required this.childAspectRatio,
+    this.childAspectRatio = 1,
     this.crossAxisSpacing = 2,
     this.mainAxisSpacing = 2,
     this.scrollDirection = Axis.vertical,
@@ -51,7 +52,7 @@ class ThemeGridViewLayoutState extends State<ThemeGridViewLayout> {
             icon: 'assets/img/outlinedMoonIcon.png',
             size: 60,
             borderRadius: 20,
-            borderColor: Theme.of(context).accentColor,
+            borderColor: Theme.of(context).hintColor.withOpacity(0.15),
             iconColor: Theme.of(context).hintColor,
             onPressed: () {
               // Set Dark theme
@@ -63,13 +64,32 @@ class ThemeGridViewLayoutState extends State<ThemeGridViewLayout> {
             icon: 'assets/img/outlinedSunIcon.png',
             size: 60,
             borderRadius: 20,
-            borderColor: Theme.of(context).accentColor,
+            borderColor: Theme.of(context).hintColor.withOpacity(0.15),
             iconColor: Theme.of(context).hintColor,
             onPressed: () {
               // Set Light theme
               ThemeController.changeTheme(context, ThemeMode.light);
             },
           ),
+          /*
+          //todo: Names
+          Column(
+            children: [
+              MyText(
+                text: 'Sombre',
+                color: Theme.of(context).hintColor,
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              MyText(
+                text: 'Clair',
+                color: Theme.of(context).hintColor,
+              ),
+            ],
+          )
+          */
         ],
       ),
     );
