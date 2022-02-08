@@ -76,7 +76,8 @@ class MyFavsState extends State<MyFavs> {
                 child: ListView.separated(
                   itemCount: widget
                       .favlist.length, // number of card depending on favList
-                  scrollDirection: Axis.horizontal, // direction of scrolling
+                  scrollDirection: Axis.horizontal, // direction of 
+                  physics: BouncingScrollPhysics(),
                   separatorBuilder: (context, index) => SizedBox(width: 10),
                   itemBuilder: (context, index) {
                     // cards

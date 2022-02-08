@@ -5,14 +5,12 @@ import 'package:numerizer/functions.dart';
 import 'package:numerizer/views/SettingsView.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:numerizer/views/components/MyAvatar.dart';
+import 'package:numerizer/views/components/MyBottomPanel.dart';
 import 'package:numerizer/views/components/MyCategories.dart';
-import 'package:numerizer/views/components/MyCircularButton.dart';
 import 'package:numerizer/views/components/MyHistoric.dart';
 import 'package:numerizer/views/components/MyFavs.dart';
-import 'package:numerizer/views/components/MyText.dart';
 import 'package:numerizer/views/components/MySearchBar.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -23,12 +21,28 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView> {
   // scrolling view controller
   ScrollController scrollController = ScrollController();
-  // sliding up panel controller
-  PanelController panelController = PanelController();
+  // datas
+  List favs = [
+    'fav1',
+    'fav2',
+    'fav3',
+    'fav4',
+    'fav5',
+    'fav6',
+  ];
+  List historics = [
+    'file1',
+    'file2',
+    'file3',
+    'file4',
+    'file5',
+    'file6',
+    'file7',
+    'file8',
+  ];
   @override
   Widget build(BuildContext context) {
     ScreenController.actualView = "HomeView";
-    List<double> screenSize = ScreenController.getScreenSize(context);
     // Change system UI properties
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -55,79 +69,7 @@ class HomeViewState extends State<HomeView> {
         child: Icon(Icons.add_rounded, size: 35),
       ),*/
       backgroundColor: Theme.of(context).backgroundColor,
-      body: SlidingUpPanel(
-        controller: panelController,
-        borderRadius: BorderRadius.circular(25),
-        collapsed: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          width: screenSize[0],
-          decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              //? Button to add a new document
-              MyCircularButton(
-                icon: Icon(
-                  Icons.add_rounded,
-                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
-                  size: 35,
-                ),
-                onPressed: () {
-                  print('Nouveau scan');
-                },
-                padding: 15,
-                borderColor: Theme.of(context).primaryColor,
-                backgroundColor: Theme.of(context).primaryColor,
-              ),
-              //? Button to see recent activities
-              MyCircularButton(
-                icon: Icon(
-                  Icons.history_rounded,
-                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
-                  size: 35,
-                ),
-                onPressed: () {
-                  print('Nouveau scan');
-                },
-                padding: 15,
-                borderColor: Theme.of(context).indicatorColor,
-                backgroundColor: Theme.of(context).indicatorColor,
-                splashColor: Theme.of(context).indicatorColor,
-              ),
-              //? Button to open the trash
-              MyCircularButton(
-                icon: Icon(
-                  Icons.delete_outline_rounded,
-                  color: Theme.of(context).backgroundColor.withOpacity(0.7), //Colors.white,
-                  size: 35,
-                ),
-                onPressed: () {
-                  print('Nouveau scan');
-                },
-                padding: 15,
-                borderColor: Theme.of(context).errorColor,
-                backgroundColor: Theme.of(context).errorColor,
-                splashColor: Theme.of(context).errorColor,
-              ),
-              //? Account profile button
-              MyAvatar(),
-            ],
-          ),
-        ),
-        panel: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Center(
-            child: MyText(
-              text: 'Ceci est un widget',
-            ),
-          ),
-        ),
+      body: MyBottomPanel(
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -209,14 +151,7 @@ class HomeViewState extends State<HomeView> {
                         children: [
                           //todo: Favorites Box
                           MyFavs(
-                            favlist: [
-                              'fav1',
-                              'fav2',
-                              'fav3',
-                              'fav4',
-                              'fav5',
-                              'fav6'
-                            ], // ! debug
+                            favlist: this.favs,
                           ),
                           SizedBox(height: 20),
                           //todo: Categories Box
@@ -224,16 +159,7 @@ class HomeViewState extends State<HomeView> {
                           SizedBox(height: 20),
                           //todo: Historic Box
                           MyHistoric(
-                            historiclist: [
-                              'file1',
-                              'file2',
-                              'file3',
-                              'file4',
-                              'file5',
-                              'file6',
-                              'file7',
-                              'file8',
-                            ], // ! debug
+                            historiclist: this.historics, // ! debug
                           ),
                         ],
                       ),

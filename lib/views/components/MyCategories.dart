@@ -63,12 +63,13 @@ class MyCategoriesState extends State<MyCategories> {
             itemCount: widget.categorylist
                 .length, // number of card depending on categoryList
             scrollDirection: Axis.horizontal, // direction of scrolling
+            physics: BouncingScrollPhysics(),
             separatorBuilder: (context, index) => SizedBox(width: 10),
             itemBuilder: (context, index) {
               // cards
               return TextButton(
                 onPressed: () {
-                  print('Fav card pressed');
+                  print('Categories card pressed');
                 },
                 style: ButtonStyle(
                   // no padding

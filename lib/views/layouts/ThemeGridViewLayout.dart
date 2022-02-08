@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:numerizer/controllers/ScreenController.dart';
 import 'package:numerizer/controllers/ThemeController.dart';
 import 'package:numerizer/views/components/MyOutlinedButton.dart';
-import 'package:numerizer/views/components/MyText.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
 class ThemeGridViewLayout extends StatefulWidget {
@@ -33,7 +32,6 @@ class ThemeGridViewLayoutState extends State<ThemeGridViewLayout> {
   bool isDarkMode = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isDarkMode = (getThemeManager(context).selectedThemeMode == ThemeMode.dark)
       ? true : false ;
