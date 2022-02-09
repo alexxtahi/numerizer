@@ -54,6 +54,7 @@ class _ScanViewState extends State<ScanView> {
       ),
     );
     return Scaffold(
+      backgroundColor: Colors.black,
       body: FutureBuilder<void>(
         future: ScannerUtils.camController.initialize(),
         builder: (context, snapshot) {

@@ -10,6 +10,7 @@ class ScannerUtils {
   static late CameraDescription firstCam;
   static late List<CameraDescription> cameras;
   static late CameraController camController;
+  static bool isFlashOn = false;
 
   static getCamera() async {
     // Ensure that plugin services are initialized so that `availableCameras()`
@@ -26,6 +27,15 @@ class ScannerUtils {
       ResolutionPreset.high,
     );
     camController.initialize();
+  }
+
+  static void flash() {
+    if (isFlashOn)
+      camController.setFlashMode(FlashMode.off);
+    else
+      camController.setFlashMode(FlashMode.torch);
+    // set new torch state
+    isFlashOn = !isFlashOn;
   }
 
   /*

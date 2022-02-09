@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 class MyCircularButton extends StatefulWidget {
   //todo: Properties
   final String tooltip;
-  final Icon icon;
+  final Icon? icon;
   final double padding;
-  final Color iconColor;
   final Color borderColor;
   final Color backgroundColor;
   final Color splashColor;
@@ -14,9 +13,8 @@ class MyCircularButton extends StatefulWidget {
   //todo: Constructor
   MyCircularButton({
     this.tooltip = "",
-    required this.icon,
+    this.icon,
     this.padding = 20,
-    this.iconColor = Colors.white,
     this.borderColor = Colors.transparent,
     this.backgroundColor = Colors.blue,
     this.splashColor = Colors.lightBlueAccent,
