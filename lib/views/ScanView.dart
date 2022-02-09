@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +6,6 @@ import 'package:numerizer/controllers/ScreenController.dart';
 import 'package:numerizer/scanner_utils.dart';
 import 'package:numerizer/views/layouts/CamErrorLayout.dart';
 import 'package:numerizer/views/layouts/CamPreviewLayout.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ScanView extends StatefulWidget {
   @override
@@ -15,28 +13,32 @@ class ScanView extends StatefulWidget {
 }
 
 class _ScanViewState extends State<ScanView> {
-  late CameraController camController;
-  late Future<void> initializeControllerFuture;
   String detectedText = '';
 
-  Future<void> initCam() async {
-    this.camController = CameraController(
-      await ScannerUtils.getCamera(),
-      ResolutionPreset.high,
-    );
-    this.initializeControllerFuture = this.camController.initialize();
-  }
-
+  /*
   @override
   void initState() {
     super.initState();
-    this.initCam();
+    //this.initCam();
+    // Inint camera controller
+    availableCameras().then((availableCameras) {
+      print('Camerasss -> ready');
+      final cameras = availableCameras;
+      ScannerUtils.camController = CameraController(
+        cameras.first,
+        ResolutionPreset.high,
+      );
+      print('Camerasss -> ${ScannerUtils.camController.cameraId}');
+    }).catchError((error) {
+      print('Cam Error -> $error');
+    });
   }
+  */
 
   @override
   void dispose() {
     super.dispose();
-    this.camController.dispose();
+    //ScannerUtils.camController.dispose();
   }
 
   @override
@@ -53,29 +55,36 @@ class _ScanViewState extends State<ScanView> {
     );
     return Scaffold(
       body: FutureBuilder<void>(
-        future: this.initializeControllerFuture,
+        future: ScannerUtils.camController.initialize(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            /*return GestureDetector(
-              onTap: () => setState(() {
-                print('camera reinit');
-              }),
-              child: CamErrorLayout(),
-            );*/
-            return CamPreviewLayout(camController: this.camController, detectedText: this.detectedText,);
+            try {
+              print('cameraId -> ${ScannerUtils.camController.cameraId}');
+              return CamPreviewLayout(
+                camController: ScannerUtils.camController,
+                detectedText: this.detectedText,
+              );
+            } catch (error) {
+              return GestureDetector(
+                onTap: () => setState(() {
+                  print('camera reinit');
+                }),
+                child: CamErrorLayout(),
+              );
+            }
           } else if (snapshot.hasError) {
             return GestureDetector(
               onTap: () => setState(() {
                 print('camera reinit');
               }),
-              child: CamErrorLayout()
+              child: CamErrorLayout(),
             );
           }
           // Loading widget
           return Center(
-            child: LoadingAnimationWidget.discreteCircle(
+            child: LoadingAnimationWidget.beat(
               color: Theme.of(context).hintColor,
-              size: 150,
+              size: 70,
             ),
           );
         },

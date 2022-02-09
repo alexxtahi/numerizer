@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:numerizer/scanner_utils.dart';
 import 'package:numerizer/views/SplashScreen.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 import 'controllers/ThemeController.dart';
 
 Future main() async {
-  await ThemeManager.initialise();
+  await ThemeManager.initialise(); // Init ThemeManager
+  await ScannerUtils.getCamera(); // Init ScannerUtils
   runApp(MyApp());
 }
 
