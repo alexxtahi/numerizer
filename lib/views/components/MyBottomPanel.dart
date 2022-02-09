@@ -61,7 +61,8 @@ class MyBottomPanelState extends State<MyBottomPanel> {
                 //openPage(context, ScanView());
                 final path = await FileManager.localPath;
                 //FileManager.mkdir();
-                UserController.hasAcceptedPermissions();
+                //UserController.hasAcceptedPermissions();
+                openPage(context, ScanView());
               },
               padding: 15,
               borderColor: Theme.of(context).primaryColor,

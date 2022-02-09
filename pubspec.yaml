@@ -46,6 +46,8 @@ dependencies:
   # UI customization
   stacked_themes: ^0.3.6
   fading_edge_scrollview: ^2.0.0
+  progress_indicators: ^1.0.0
+  loading_animation_widget: ^1.1.0+0
   # layouts
   sliding_up_panel: ^2.0.0+1
   # Machine Learning
