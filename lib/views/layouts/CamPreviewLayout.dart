@@ -1,9 +1,12 @@
 import 'package:camera/camera.dart';
+//import 'package:custom_image_picker/custom_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:numerizer/controllers/ScreenController.dart';
+//import 'package:numerizer/models/PhoneAlbum.dart';
 import 'package:numerizer/scanner_utils.dart';
 import 'package:numerizer/views/components/MyCamButton.dart';
 import 'package:numerizer/views/components/MyCircularButton.dart';
+import 'package:numerizer/views/components/MyPhotos.dart';
 
 class CamPreviewLayout extends StatefulWidget {
   final CameraController camController;
@@ -18,6 +21,28 @@ class CamPreviewLayout extends StatefulWidget {
 
 class _CamPreviewLayoutState extends State<CamPreviewLayout> {
   String detectedText = '';
+  /*
+  final customImagePicker = CustomImagePicker();
+  List<PhoneAlbum> albums = [];
+  List<PhonePhoto> imagesOfAlbum = [];
+
+  void getAlbums() async {
+    await customImagePicker.getAllImages(callback: (retrievedAlbums) {
+      albums = retrievedAlbums;
+    });
+    print('albums:');
+    print(albums);
+  }
+
+  void getPhotos(String albumID) async {
+    await customImagePicker.getPhotosOfAlbum(
+      albumID, // The id of the album you want to retrieve the images for
+      callback: (images) {
+        imagesOfAlbum.addAll(images);
+      },
+    );
+  }
+  */
 
   @override
   void initState() {
@@ -35,8 +60,9 @@ class _CamPreviewLayoutState extends State<CamPreviewLayout> {
             flex: 5,
             child: Stack(
               fit: StackFit.expand,
+              alignment: AlignmentDirectional.bottomCenter,
               children: <Widget>[
-                // Camera previewer
+                //! Camera previewer
                 ClipRRect(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -45,6 +71,13 @@ class _CamPreviewLayoutState extends State<CamPreviewLayout> {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: CameraPreview(widget.camController),
+                  ),
+                ),
+                //! Recents photos
+                Positioned(
+                  bottom: 0,
+                  child: MyPhotos(
+                    photos: [for (int i = 0; i < 10; i++) 'zaza'],
                   ),
                 ),
                 // Show detected text
@@ -103,7 +136,12 @@ class _CamPreviewLayoutState extends State<CamPreviewLayout> {
                         },
                       ),
                       // Take picture button
-                      MyCamButton(),
+                      MyCamButton(
+                        onPressed: () {
+
+                          //getAlbums();
+                        },
+                      ),
                       // Flash button
                       MyCircularButton(
                         icon: Icon(

@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -85,7 +84,7 @@ class _ScanViewState extends State<ScanView> {
           return Center(
             child: LoadingAnimationWidget.beat(
               color: Theme.of(context).hintColor,
-              size: 70,
+              size: 50,
             ),
           );
         },

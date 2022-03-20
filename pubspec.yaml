@@ -35,6 +35,7 @@ dependencies:
   # camera
   camera: ^0.9.4+11
   image_picker: ^0.8.2
+  #custom_image_picker: ^0.5.0
   # storage management
   path: ^1.8.0
   path_provider: ^2.0.2
